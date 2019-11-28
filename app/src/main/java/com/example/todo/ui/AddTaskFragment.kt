@@ -3,7 +3,6 @@ package com.example.todo.ui
 
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +11,7 @@ import android.widget.ArrayAdapter
 import android.widget.DatePicker
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.example.todo.MainActivity
 import com.example.todo.R
@@ -24,7 +24,6 @@ import kotlinx.android.synthetic.main.fragment_add_task.*
 import kotlinx.android.synthetic.main.layout_add_category_item.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -43,6 +42,7 @@ class AddTaskFragment : Fragment(),AdapterView.OnItemSelectedListener {
     private  var categoryName : String? = null
     private var taskCategoryList : ArrayList<String> = arrayListOf()
     private var listener: OnFragmentInteractionListener? = null
+    private var mode = 0
 
 
     override fun onCreateView(
@@ -55,6 +55,12 @@ class AddTaskFragment : Fragment(),AdapterView.OnItemSelectedListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        arguments?.let {
+            if (it.getInt(MODE)!=0){
+                mode = it.getInt(MODE)
+                task = it.getParcelable(DATA)!!
+            }
+        }
         GlobalScope.launch(Dispatchers.IO) {
             if (database.taskDao.countAllCategories() == 0) {
                 categoryEdit = resources.getStringArray(R.array.taskCategory)
@@ -71,8 +77,16 @@ class AddTaskFragment : Fragment(),AdapterView.OnItemSelectedListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setToolbar()
+        setEditData()
         init()
         getCategoryListData()
+    }
+
+    private fun setEditData() {
+        sp_category_name.prompt = task.categoryName
+        ed_title.setText(task.title)
+        ed_task_note.setText(task.task)
+        tv_task_date.text = Utils.format(task.createDate,Utils.DATE_FORMAT_dd_MMM_yyyy)
     }
 
     private fun getCategoryListData() {
@@ -127,14 +141,18 @@ class AddTaskFragment : Fragment(),AdapterView.OnItemSelectedListener {
     private fun addTaskToDataBase() {
         GlobalScope.launch(Dispatchers.IO){
             getEntries()
-            mViewModel.addTodoTask(task)
+            if (mode==1){
+                mViewModel.updateTodoTask(task)
+            }else{
+                mViewModel.addTodoTask(task)
+            }
         }
         listener?.onBackPressed()
     }
 
     private fun getEntries() {
         with(task){
-            this.title = this@AddTaskFragment.tv_title.text.toString()
+            this.title = this@AddTaskFragment.ed_title.text.toString()
             this.categoryName = this@AddTaskFragment.categoryName!!
             this.createDate = this@AddTaskFragment.taskDate
             this.task = this@AddTaskFragment.ed_task_note.text.toString()
@@ -206,8 +224,20 @@ class AddTaskFragment : Fragment(),AdapterView.OnItemSelectedListener {
 
     companion object{
         const val CLASS_SIMPLE_NAME = "Add Task"
+        private const val MODE ="mode"
+        private const val DATA = "Data"
+        const val EDIT:Int = 1
+
         @JvmStatic
         fun newInstance() = AddTaskFragment()
+
+        @JvmStatic
+        fun newInstance(mMode:Int,task: TodoTask) = AddTaskFragment().apply {
+                arguments = Bundle().apply {
+                    this.putInt(MODE,mMode)
+                    this.putParcelable(DATA,task)
+                }
+        }
     }
 
 }

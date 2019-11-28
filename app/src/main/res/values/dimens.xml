@@ -3,4 +3,5 @@
     <dimen name="margin_bottom_large">54dp</dimen>
     <dimen name="margin_small">8dp</dimen>
     <dimen name="text_size">16sp</dimen>
+    <dimen name="title">20sp</dimen>
 </resources>

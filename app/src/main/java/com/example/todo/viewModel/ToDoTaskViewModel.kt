@@ -29,4 +29,9 @@ class ToDoTaskViewModel(application: Application):AndroidViewModel(application) 
     suspend fun getAllTaskData(){
         allTaskListLiveData = repo.getAllTask()
     }
+
+
+    suspend fun updateTodoTask(task: TodoTask){
+        repo.updateTask(task)
+    }
 }

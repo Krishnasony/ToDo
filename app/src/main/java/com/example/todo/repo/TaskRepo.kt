@@ -23,4 +23,8 @@ class TaskRepo(private val taskDao: TaskDao) {
     suspend fun getAllTask() = withContext(Dispatchers.IO){
         taskDao.getAllTaskList()
     }
+
+    suspend fun updateTask(task: TodoTask) = withContext(Dispatchers.IO){
+        taskDao.updateTask(task)
+    }
 }

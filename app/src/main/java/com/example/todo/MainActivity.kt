@@ -1,13 +1,12 @@
 package com.example.todo
 
-import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Adapter
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.example.todo.room.entity.TodoTask
 import com.example.todo.ui.AddTaskFragment
+import com.example.todo.ui.RecyclerViewListener
 import com.example.todo.ui.TaskListAdapter
 import com.example.todo.utils.observeOnce
 import com.example.todo.viewModel.ToDoTaskViewModel
@@ -21,7 +20,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class MainActivity : AppCompatActivity(),AddTaskFragment.OnFragmentInteractionListener {
+class MainActivity : AppCompatActivity(),AddTaskFragment.OnFragmentInteractionListener,RecyclerViewListener{
 
     private var adapter:TaskListAdapter ?= null
     private var taskList:ArrayList<TodoTask> = arrayListOf()
@@ -44,7 +43,7 @@ class MainActivity : AppCompatActivity(),AddTaskFragment.OnFragmentInteractionLi
             alignItems = AlignItems.STRETCH
         }
         rv_task.layoutManager = flexBoxLayoutManager
-        adapter = TaskListAdapter(taskList,this)
+        adapter = TaskListAdapter(this,taskList,this)
         rv_task.adapter = adapter
 
     }
@@ -63,10 +62,18 @@ class MainActivity : AppCompatActivity(),AddTaskFragment.OnFragmentInteractionLi
         }
     }
 
-    @SuppressLint("RestrictedApi")
     private fun addTaskFragment() {
-        add_new_task.visibility = View.GONE
+        group.visibility = View.GONE
         val instance = AddTaskFragment.newInstance()
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.container, instance, AddTaskFragment.CLASS_SIMPLE_NAME)
+            .addToBackStack(AddTaskFragment.CLASS_SIMPLE_NAME)
+            .commit()
+    }
+
+    private fun addTaskFragmentForEdit(task: TodoTask) {
+        group.visibility = View.GONE
+        val instance = AddTaskFragment.newInstance(AddTaskFragment.EDIT,task)
         supportFragmentManager.beginTransaction()
             .replace(R.id.container, instance, AddTaskFragment.CLASS_SIMPLE_NAME)
             .addToBackStack(AddTaskFragment.CLASS_SIMPLE_NAME)
@@ -79,12 +86,18 @@ class MainActivity : AppCompatActivity(),AddTaskFragment.OnFragmentInteractionLi
         title = CLASS_SIMPLE_NAME
     }
 
-    @SuppressLint("RestrictedApi")
+    override fun onClickEdit(task: TodoTask) {
+        addTaskFragmentForEdit(task)
+    }
+
+    override fun onClickDelete(task: TodoTask) {
+    }
+
     override fun onBackPressed() {
         val count = supportFragmentManager.backStackEntryCount
         if (count==1){
             setToolbar()
-            add_new_task.visibility = View.VISIBLE
+            group.visibility = View.VISIBLE
             supportFragmentManager.popBackStack()
         }else{
             super.onBackPressed()
