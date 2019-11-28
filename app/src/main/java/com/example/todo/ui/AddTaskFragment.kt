@@ -8,11 +8,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.DatePicker
 import androidx.lifecycle.Observer
 import com.example.todo.R
 import com.example.todo.room.database.AppDataBase
 import com.example.todo.room.entity.Category
 import com.example.todo.room.entity.TodoTask
+import com.example.todo.utils.OnDateSetListener
+import com.example.todo.utils.Utils
+import com.example.todo.utils.currentDate
 import com.example.todo.utils.observeOnce
 import com.example.todo.viewModel.ToDoTaskViewModel
 import kotlinx.android.synthetic.main.fragment_add_task.*
@@ -30,6 +34,7 @@ class AddTaskFragment : Fragment(),AdapterView.OnItemSelectedListener {
 
     private var category = Category()
     private var task = TodoTask()
+    private var taskDate = currentDate
     private val mViewModel:ToDoTaskViewModel by viewModel()
     private val database:AppDataBase by inject()
     private  var categoryEdit : Array<String>? = null
@@ -92,12 +97,28 @@ class AddTaskFragment : Fragment(),AdapterView.OnItemSelectedListener {
 
     private fun init(){
         sp_category_name.onItemSelectedListener = this
+        tv_add_category.setOnClickListener {
+
+        }
+        tv_task_date.text = Utils.format(taskDate, Utils.DATE_FORMAT_dd_MMM_yyyy)
+        tv_task_date.setOnClickListener {
+            Utils.datePicker(
+                context = context!!,
+                listener = object : OnDateSetListener {
+                    override fun onDateSet(view: DatePicker?, timeInMillis: Long) {
+                        taskDate = timeInMillis
+                        tv_task_date.text = Utils.format(timeInMillis, Utils.DATE_FORMAT_dd_MMM_yyyy)
+                    }
+                }).show()
+        }
     }
 
     override fun onNothingSelected(p0: AdapterView<*>?) {
     }
 
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+        p0?.selectedItemPosition
+        categoryName  = taskCategoryList[p2]
     }
 
 
