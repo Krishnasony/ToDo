@@ -6,4 +6,5 @@
 
     <color name="md_orange_400">#F44336</color>
     <color name="colorWhite">#FFFFFF</color>
+    <color name="color_black">#000000</color>
 </resources>

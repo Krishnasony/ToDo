@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".AddTaskFragment">
+
+    <TextView
+        android:id="@+id/tv_expense_amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:paddingTop="8dp"
+        android:text="@string/title"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/text_size"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.example.todo.utils.EditTextWithClearButton
+        android:id="@+id/ed_expense_amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:gravity="center"
+        android:hint="@string/enter_title"
+        android:imeOptions="actionNext"
+        android:inputType="numberDecimal"
+        android:textSize="@dimen/text_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_expense_amount" />
+
+
+    <TextView
+        android:id="@+id/tv_expense_category_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:paddingTop="8dp"
+        android:text="@string/add_category"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/text_size"
+        app:layout_constraintTop_toBottomOf="@+id/ed_expense_amount" />
+    <!--android:entries="@array/expenseCategory"-->
+
+    <Spinner
+        android:id="@+id/sp_expense_category_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@drawable/dropdown_bg"
+        android:gravity="center"
+        android:spinnerMode="dropdown"
+        android:text="@string/category"
+        android:theme="@style/ThemeOverlay.AppCompat.Light"
+        app:layout_constraintEnd_toStartOf="@+id/tv_add_category"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_expense_category_name" />
+
+    <TextView
+        android:id="@+id/tv_add_category"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/circle_accent"
+        android:drawableStart="@drawable/ic_add_category"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_expense_category_name" />
+
+
+    <!-- android:onClick="@{onPeopleClickListener}"
+     android:text="@{(expense.other_name != null ? expense.other_name + `, (` + (expense.name != null ? expense.name : ``) + `)` : ``)}"
+
+-->
+
+
+
+    <TextView
+        android:id="@+id/tv_expense_note"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="@string/task"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sp_expense_category_name" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/ed_expense_note"
+        android:layout_width="0dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:gravity="top|start"
+        android:background="@drawable/task_bg"
+        android:imeOptions="actionDone"
+        android:inputType="textMultiLine"
+        android:maxLength="150"
+        android:padding="8dp"
+        android:hint="@string/enter_task"
+        android:textSize="@dimen/text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_expense_note" />
+
+    <TextView
+        android:id="@+id/tv_expense_date_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="@string/date"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ed_expense_note" />
+
+    <TextView
+        android:id="@+id/tv_expense_date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:gravity="center"
+        android:textSize="@dimen/text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_expense_date_label"
+        android:hint="@string/_12_apr_2019" />
+
+    <TextView
+        android:id="@+id/bt_new_expense_cancel"
+        android:layout_width="132dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/cancel_button_bg"
+        android:drawableStart="@drawable/ic_clear_black_24dp"
+        android:gravity="center"
+        android:paddingStart="16dp"
+        android:paddingLeft="16dp"
+        android:paddingEnd="16dp"
+        android:paddingRight="16dp"
+        android:text="@string/cancel"
+        android:textColor="@color/colorWhite"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/bt_new_expense_done"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/bt_new_expense_done"
+        app:layout_constraintTop_toBottomOf="@+id/tv_expense_date" />
+
+    <TextView
+        android:id="@+id/bt_new_expense_done"
+        android:layout_width="132dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/done_button_bg"
+        android:drawableStart="@drawable/ic_done"
+        android:gravity="center"
+        android:paddingStart="16dp"
+        android:paddingLeft="16dp"
+        android:paddingEnd="16dp"
+        android:paddingRight="16dp"
+        android:text="@string/done"
+        android:textColor="@color/colorWhite"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/bt_new_expense_cancel"
+        app:layout_constraintTop_toBottomOf="@+id/tv_expense_date" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

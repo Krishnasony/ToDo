@@ -2,4 +2,5 @@
 <resources>
     <dimen name="margin_bottom_large">54dp</dimen>
     <dimen name="margin_small">8dp</dimen>
+    <dimen name="text_size">16sp</dimen>
 </resources>
