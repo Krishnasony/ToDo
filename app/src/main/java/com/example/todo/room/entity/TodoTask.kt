@@ -8,9 +8,10 @@ import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "todo_task")
 data class TodoTask(
-    @ColumnInfo(name = "title") @SerializedName("title") val title: String,
-    @ColumnInfo(name = "task") @SerializedName("task") val task: String,
-    @ColumnInfo(name = "create_date") @SerializedName("create_date") val createDate: Long
+    @ColumnInfo(name = "title") @SerializedName("title") var title: String,
+    @ColumnInfo(name = "task") @SerializedName("task") var task: String,
+    @ColumnInfo(name = "category_name") @SerializedName("category_name")var categoryName:String,
+    @ColumnInfo(name = "create_date") @SerializedName("create_date") var createDate: Long
 ):ViewModel() {
 
     @PrimaryKey(autoGenerate = true)
@@ -20,6 +21,7 @@ data class TodoTask(
     constructor():this(
         title ="",
         task = "",
+        categoryName = "",
         createDate = 0L
     )
 }

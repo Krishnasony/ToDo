@@ -13,4 +13,6 @@
     <string name="add_category">Add Category</string>
     <string name="enter_title">Enter Title</string>
     <string name="title">Title</string>
+    <string name="add_new_item">Add New Item</string>
+    <string name="itemName">Item Name</string>
 </resources>

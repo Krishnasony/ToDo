@@ -163,7 +163,7 @@
         android:hint="@string/_12_apr_2019" />
 
     <TextView
-        android:id="@+id/bt_new_expense_cancel"
+        android:id="@+id/bt_new_task_cancel"
         android:layout_width="132dp"
         android:layout_height="44dp"
         android:layout_marginStart="16dp"
@@ -181,13 +181,13 @@
         android:text="@string/cancel"
         android:textColor="@color/colorWhite"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/bt_new_expense_done"
+        app:layout_constraintEnd_toStartOf="@+id/bt_new_task_done"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/bt_new_expense_done"
+        app:layout_constraintStart_toEndOf="@+id/bt_new_task_done"
         app:layout_constraintTop_toBottomOf="@+id/tv_task_date" />
 
     <TextView
-        android:id="@+id/bt_new_expense_done"
+        android:id="@+id/bt_new_task_done"
         android:layout_width="132dp"
         android:layout_height="44dp"
         android:layout_marginTop="32dp"
@@ -204,7 +204,7 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/bt_new_expense_cancel"
+        app:layout_constraintStart_toEndOf="@+id/bt_new_task_cancel"
         app:layout_constraintTop_toBottomOf="@+id/tv_task_date" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

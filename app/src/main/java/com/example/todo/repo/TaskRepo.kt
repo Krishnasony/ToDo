@@ -2,6 +2,7 @@ package com.example.todo.repo
 
 import com.example.todo.room.dao.TaskDao
 import com.example.todo.room.entity.Category
+import com.example.todo.room.entity.TodoTask
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -13,5 +14,9 @@ class TaskRepo(private val taskDao: TaskDao) {
 
     suspend fun getAllCategory() = withContext(Dispatchers.IO){
         taskDao.getAllCategoryList()
+    }
+
+    suspend fun addTask(task: TodoTask) = withContext(Dispatchers.IO){
+        taskDao.addTask(task)
     }
 }

@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
 import com.example.todo.room.entity.Category
 import com.example.todo.room.entity.TodoTask
 
@@ -11,6 +12,9 @@ import com.example.todo.room.entity.TodoTask
 interface TaskDao {
   @Insert
   fun addTask(vararg task: TodoTask)
+
+  @Update
+  fun updateTask(vararg task: TodoTask)
 
   @Insert
   fun addCategory(vararg category: Category)
@@ -20,4 +24,7 @@ interface TaskDao {
 
   @Query("SELECT * FROM category")
   fun getAllCategoryList():LiveData<List<Category>>
+
+  @Query("SELECT * FROM todo_task")
+  fun getAllTaskList():LiveData<List<TodoTask>>
 }
