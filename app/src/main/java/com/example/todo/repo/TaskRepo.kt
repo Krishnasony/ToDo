@@ -27,4 +27,7 @@ class TaskRepo(private val taskDao: TaskDao) {
     suspend fun updateTask(task: TodoTask) = withContext(Dispatchers.IO){
         taskDao.updateTask(task)
     }
+    suspend fun delete(task: TodoTask) = withContext(Dispatchers.IO){
+        taskDao.deleteTask(task)
+    }
 }

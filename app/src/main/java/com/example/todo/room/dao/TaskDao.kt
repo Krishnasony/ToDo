@@ -1,10 +1,7 @@
 package com.example.todo.room.dao
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import com.example.todo.room.entity.Category
 import com.example.todo.room.entity.TodoTask
 
@@ -27,4 +24,7 @@ interface TaskDao {
 
   @Query("SELECT * FROM todo_task")
   fun getAllTaskList():LiveData<List<TodoTask>>
+
+  @Delete
+  fun deleteTask(task: TodoTask)
 }

@@ -15,4 +15,6 @@
     <string name="title">Title</string>
     <string name="add_new_item">Add New Item</string>
     <string name="itemName">Item Name</string>
+    <string name="delete">Delete</string>
+    <string name="edit_task">Edit Task</string>
 </resources>

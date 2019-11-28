@@ -34,4 +34,7 @@ class ToDoTaskViewModel(application: Application):AndroidViewModel(application) 
     suspend fun updateTodoTask(task: TodoTask){
         repo.updateTask(task)
     }
+    suspend fun delete(task: TodoTask){
+        repo.delete(task)
+    }
 }

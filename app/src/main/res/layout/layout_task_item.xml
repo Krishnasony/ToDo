@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_small"
             android:layout_marginTop="@dimen/margin_small"
-            android:text="Title"
+            android:text="@string/title"
             android:textColor="@color/colorWhite"
             android:textSize="@dimen/title"
             app:layout_constraintStart_toStartOf="parent"

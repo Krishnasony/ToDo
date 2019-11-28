@@ -91,12 +91,17 @@ class MainActivity : AppCompatActivity(),AddTaskFragment.OnFragmentInteractionLi
     }
 
     override fun onClickDelete(task: TodoTask) {
+        GlobalScope.launch(Dispatchers.IO) {
+            mViewModel.delete(task)
+        }
+        getTaskDataList()
     }
 
     override fun onBackPressed() {
         val count = supportFragmentManager.backStackEntryCount
         if (count==1){
             setToolbar()
+            getTaskDataList()
             group.visibility = View.VISIBLE
             supportFragmentManager.popBackStack()
         }else{
