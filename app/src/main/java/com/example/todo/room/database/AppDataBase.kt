@@ -6,11 +6,13 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.todo.room.dao.TaskDao
 import com.example.todo.room.database.AppDataBase.Companion.VERSION
+import com.example.todo.room.entity.Category
 import com.example.todo.room.entity.TodoTask
 
 @Database(
     entities = [
-        TodoTask::class
+        TodoTask::class,
+        Category::class
     ],
     version = VERSION,
     exportSchema = false
