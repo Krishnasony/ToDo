@@ -12,6 +12,7 @@ class ToDoTaskViewModel(application: Application):AndroidViewModel(application) 
     private val dao = AppDataBase.getDatabase(application).taskDao
     private val repo = TaskRepo(dao)
     lateinit var categoryListLiveData:LiveData<List<Category>>
+    lateinit var allTaskListLiveData:LiveData<List<TodoTask>>
 
     suspend fun addCategory(category: Category){
         repo.addCategory(category)
@@ -23,5 +24,9 @@ class ToDoTaskViewModel(application: Application):AndroidViewModel(application) 
 
     suspend fun addTodoTask(task: TodoTask){
         repo.addTask(task)
+    }
+
+    suspend fun getAllTaskData(){
+        allTaskListLiveData = repo.getAllTask()
     }
 }

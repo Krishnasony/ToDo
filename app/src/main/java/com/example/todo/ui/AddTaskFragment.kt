@@ -70,6 +70,7 @@ class AddTaskFragment : Fragment(),AdapterView.OnItemSelectedListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setToolbar()
         init()
         getCategoryListData()
     }
@@ -144,7 +145,7 @@ class AddTaskFragment : Fragment(),AdapterView.OnItemSelectedListener {
     private fun setToolbar(){
         val toolbar = (activity as MainActivity).findViewById<Toolbar>(R.id.toolbar)
         toolbar.title = CLASS_SIMPLE_NAME
-        toolbar.setNavigationIcon(R.drawable.toolbar_ic)
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp)
         toolbar.setNavigationOnClickListener {
             listener?.onBackPressed()
         }
