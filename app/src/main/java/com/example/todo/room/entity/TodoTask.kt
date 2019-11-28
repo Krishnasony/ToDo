@@ -16,4 +16,10 @@ data class TodoTask(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "primaryKey")
     var primaryKey: Int = 0
+
+    constructor():this(
+        title ="",
+        task = "",
+        createDate = 0L
+    )
 }

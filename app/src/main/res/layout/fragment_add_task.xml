@@ -4,10 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".AddTaskFragment">
+    tools:context=".ui.AddTaskFragment">
 
     <TextView
-        android:id="@+id/tv_expense_amount"
+        android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.example.todo.utils.EditTextWithClearButton
-        android:id="@+id/ed_expense_amount"
+        android:id="@+id/ed_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -31,14 +31,14 @@
         android:gravity="center"
         android:hint="@string/enter_title"
         android:imeOptions="actionNext"
-        android:inputType="numberDecimal"
+        android:inputType="text"
         android:textSize="@dimen/text_size"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_expense_amount" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_title" />
 
 
     <TextView
-        android:id="@+id/tv_expense_category_name"
+        android:id="@+id/tv_category_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -50,11 +50,11 @@
         android:text="@string/add_category"
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/text_size"
-        app:layout_constraintTop_toBottomOf="@+id/ed_expense_amount" />
+        app:layout_constraintTop_toBottomOf="@+id/ed_title" />
     <!--android:entries="@array/expenseCategory"-->
 
     <Spinner
-        android:id="@+id/sp_expense_category_name"
+        android:id="@+id/sp_category_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -69,7 +69,7 @@
         android:theme="@style/ThemeOverlay.AppCompat.Light"
         app:layout_constraintEnd_toStartOf="@+id/tv_add_category"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_expense_category_name" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_category_name" />
 
     <TextView
         android:id="@+id/tv_add_category"
@@ -81,7 +81,7 @@
         android:drawableStart="@drawable/ic_add_category"
         android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_expense_category_name" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_category_name" />
 
 
     <!-- android:onClick="@{onPeopleClickListener}"
@@ -105,10 +105,10 @@
         android:textSize="@dimen/text_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_expense_category_name" />
+        app:layout_constraintTop_toBottomOf="@+id/sp_category_name" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/ed_expense_note"
+        android:id="@+id/ed_task_note"
         android:layout_width="0dp"
         android:layout_height="72dp"
         android:layout_marginStart="8dp"
@@ -129,7 +129,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_expense_note" />
 
     <TextView
-        android:id="@+id/tv_expense_date_label"
+        android:id="@+id/tv_task_date_label"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -142,10 +142,10 @@
         android:textSize="@dimen/text_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ed_expense_note" />
+        app:layout_constraintTop_toBottomOf="@+id/ed_task_note" />
 
     <TextView
-        android:id="@+id/tv_expense_date"
+        android:id="@+id/tv_task_date"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -159,7 +159,7 @@
         android:textSize="@dimen/text_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_expense_date_label"
+        app:layout_constraintTop_toBottomOf="@+id/tv_task_date_label"
         android:hint="@string/_12_apr_2019" />
 
     <TextView
@@ -184,7 +184,7 @@
         app:layout_constraintEnd_toStartOf="@+id/bt_new_expense_done"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/bt_new_expense_done"
-        app:layout_constraintTop_toBottomOf="@+id/tv_expense_date" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_task_date" />
 
     <TextView
         android:id="@+id/bt_new_expense_done"
@@ -205,6 +205,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/bt_new_expense_cancel"
-        app:layout_constraintTop_toBottomOf="@+id/tv_expense_date" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_task_date" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

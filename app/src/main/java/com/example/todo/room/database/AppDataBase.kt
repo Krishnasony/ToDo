@@ -22,7 +22,7 @@ abstract class AppDataBase:RoomDatabase() {
     abstract val taskDao:TaskDao
 
     companion object{
-        private const val DATABASE_NAME="voice_search.db"
+        const val DATABASE_NAME="todo_task.db"
         const val VERSION = 1
 
         @Volatile

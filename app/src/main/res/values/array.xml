@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="taskCategory">
+
+        <item>Account</item>
+        <item>Banking</item>
+        <item>Company</item>
+        <item>Donations</item>
+        <item>Electricity Bill</item>
+        <item>Entertainment</item>
+        <item>Food</item>
+        <item>Fuel</item>
+        <item>Interest</item>
+        <item>Insurance</item>
+        <item>Medical</item>
+        <item>Others</item>
+        <item>Rent</item>
+        <item>Stationary</item>
+        <item>Shopping</item>
+        <item>Salary</item>
+        <item>Telephone Bill</item>
+        <item>Travelling</item>
+        <item>Taxes</item>
+
+    </string-array>
+</resources>

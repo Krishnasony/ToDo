@@ -2,6 +2,7 @@ package com.example.todo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.todo.ui.AddTaskFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

@@ -2,6 +2,7 @@ package com.example.todo
 
 import android.app.Application
 import com.example.todo.di.appModule
+import com.example.todo.di.roomModule
 import com.facebook.stetho.Stetho
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -15,7 +16,7 @@ class ToDoApplication : Application() {
         startKoin{
             androidLogger()
             androidContext(this@ToDoApplication)
-            modules(listOf(appModule))
+            modules(listOf(appModule, roomModule))
         }
         Stetho.initializeWithDefaults(this)
 
